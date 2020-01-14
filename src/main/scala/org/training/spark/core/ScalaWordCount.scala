@@ -8,8 +8,9 @@ import org.apache.spark.{SparkConf, SparkContext}
 object ScalaWordCount {
 
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Wordcount")
+    val conf = new SparkConf().setAppName("Wordcount").setMaster("local[*]")
     val sc = new SparkContext(conf)
+    sc.setLogLevel("warn")
 
     val rdd = sc.textFile("data/textfile")
 
